@@ -1,0 +1,13 @@
+<div class="headerMenu">
+  <div class="headerMenu_out">
+    <% if user_signed_in? %>
+      <div class="loginedMenus">
+        
+      </div>
+    <% else %>
+      <div class="beforeLoginMenus">
+        
+        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "Log in", new_user_session_path %>
+    <% end %>
+  </div>
