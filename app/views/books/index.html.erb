@@ -1,1 +1,42 @@
-<h1>index</h1>
+  <!--部分テンプレート-->
+  <%= render 'list', Book: @book, user: @user %>
+  
+  <h3>Books</h3>
+    <!--table-->
+    <table>
+      <thead>
+        <tr><!--1行目の見出し-->
+          <th><strong>Title</strong></th>
+          <th><strong>Opinion</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td><%= link_to user_path(book.id) do %>
+              <%=image_tag @user.get_profile_image(100,100) %>
+              <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+            <%=book.title %>
+            <% end %>
+            </td>
+          <td><%=book.body %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+

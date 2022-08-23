@@ -1,2 +1,20 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<!--部分テンプレート-->
+  <%= render 'list',  book: @book, user: @user %>
+
+
+<h3>Book detail</h3>
+　<table>
+    <tbody>
+      <tr>
+        <td>
+          <%=image_tag @book.user.get_profile_image(100,100) %>
+        </td>
+        <td>
+          <%= @book.title %>
+        </td>
+        <td>
+          <%= @book.body %>
+        </td>
+        </tr>
+    </tbody>
+  </teble>  
