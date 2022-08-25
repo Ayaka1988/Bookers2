@@ -1,32 +1,46 @@
- <h2>User info</h2>
- 
-  <% if @user.errors.any? %>
-    <%= @user.errors.count %>errors prohibited this book from being saved:
-    <ul>
-      <%= @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <%end %>
-    </ul>
-  <% end %>
-    
-    
-    <!-- form_with部分-->
-    <%= form_with model: @user do |f| %>
-      <div>
-        <%= f.label :Name %><br>
-        <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
-      </div>
-      <div>
-        <%= f.label :Image %><br>
-        <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
-      </div>
-      <div>
-        <%= f.label :Introdaction %><br>
-        <%= f.text_area :introduction, autofocus: true, placeholder: "Introduction" %>
-      </div>
-      <div>
-        <%= f.submit "Update User" %>
-      </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <br>
+        <h2>User info</h2>
+        <% if @user.errors.any? %>
+        <%= @user.errors.count %>errors prohibited this book from being saved:
+        <ul>
+        <%= @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <%end %>
+        </ul>
+        <% end %>
+          <!--<form enctype="multipart/form-data" accept-charset="UTF-8" method="post">-->
+          <!--<input type="hidden" name="_method" value="patch" autocomplete="off">-->
+          <!--<input type="hidden" name="authenticity_token" value="51U5OyKhinHiAbiCeYd3C5ATNf7xi9u2QQnZCJQkDNIuofRGmeLRd_wv4-zQSeVf56K2dBw0bFnedNN2RYseqQ" autocomplete="off">-->
+        <%= form_with model: @user do |f| %>
+          <div>
+            <%= f.label :Name %><br>
+            <%= f.text_field :name, autofocus: true, placeholder: "Name" %>
+          </div>
+          <div>
+            <%= f.label :Image %><br>
+            <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
+          </div>
+          <div>
+            <%= f.label :Introdaction %><br>
+            <%= f.text_area :introduction, autofocus: true, placeholder: "Introduction" %>
+          </div>
+          <div class="form-group">
+            <p><%= f.submit "Update User", class:"btn btn-secondary" do %>
+            <% end %>
+            </p>
+            <!--<input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">-->
+          </div>
+          <!--</form>-->
+        <% end %>
 
-    <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
 

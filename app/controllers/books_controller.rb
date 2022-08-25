@@ -13,7 +13,7 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully "
       redirect_to book_path(@book)
     else
-      flash[:alret] ="can't be blank"
+      flash[:alret] 
       @books = Book.all
       @user = current_user
       render :index
@@ -30,16 +30,30 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
   end
-  
+
   def edit
-    @book= Book.find(params[:id])
-    @user = current_user
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+    redirect_to  edit_book_path
+    end
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if  @book.update(book_params)
+       flash[:notice] = "You have update book successfully "
+       redirect_to book_path
+    else
+        render :edit
+    end
   end
 
   def destroy
+    @books = Book.all
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to book_path
+    # unless @book.user == current_user
+      redirect_to books_path
   end
 
 
