@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else
       redirect_to user_path(current_user)
     end
-  end
+  end  
 
   def index
     @users = User.all
